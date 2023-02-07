@@ -5,6 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "Seeding..."
-
 User.create(user_name: 'test', email: 'test@gmail.com', password: '1234', name: 'test')
+
+Recipe.create(
+	image: 'https://raw.githubusercontent.com/do-community/react_rails_recipe/master/app/assets/images/Sammy_Meal.jpg',
+	name: 'test recipe',
+	source_url: 'https://www.allrecipes.com/recipe/270643/pumpkin-protein-muffins/',
+	category: 'muffin',
+	serving_size: 2,
+	prep_time: 2,
+	cook_time: 2,
+	yield: 'some yield',
+	notes: 'some notes',
+	users_id: 1
+)
+
+Ingredient.create(
+	name: 'ingredient 1',
+	amount: 2,
+	units: 'grams',
+	recipes_id: 1
+)
+
+Procedure.create(
+	step_num: 1,
+	procedure: 'this is the first procedure',
+	recipes_id: 1
+)
