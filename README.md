@@ -1,12 +1,5 @@
 # README
 
-login credentials
-
-user_name : test
-email : test@gmail.com
-password : 123
-name: test
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
