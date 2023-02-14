@@ -21,13 +21,13 @@ class IngredientsController < ApplicationController
 			render json: ingredient, status: :created
 		
 		else
-			render json: {errors: @ingredient.errors.full_messages}, status: :unprocessable_entity
+			render json: {errors: ingredient.errors.full_messages}, status: :unprocessable_entity
 		end
 	end
 
 	def update
 		unless ingredient.update(ingredient_params)
-			render json: {errors: @ingredient.errors.full_messages}, status: :unprocessable_entity
+			render json: {errors: ingredient.errors.full_messages}, status: :unprocessable_entity
 		end
 	end
 
