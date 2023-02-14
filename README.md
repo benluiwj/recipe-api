@@ -22,3 +22,7 @@ Things you may want to cover:
 - Deployment instructions
 
 - ...
+
+# IMPROVEMENTS
+
+- [ ] Improve primary key for procedures and ingredients to include the step number and name respectively
