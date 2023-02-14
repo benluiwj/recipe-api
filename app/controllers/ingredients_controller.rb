@@ -15,7 +15,14 @@ class IngredientsController < ApplicationController
 		end
 	end
 
-	def create
+	def create		
+		@ingredient = Ingredient.new(ingredient_params)
+		if @ingredient.save
+			render json: @ingredient, status: :created
+		
+		else
+			render json: {errors: @ingredient.errors.full_messages}, status: :unprocessable_entity
+		end
 	end
 
 	def update
