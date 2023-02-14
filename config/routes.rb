@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   post '/signup', to: "users#create"
   get '/auto-login', to: "session#auto_login#"
 
-  resources :recipes
+  resources :recipes do
+	resources :ingredients
+	resources :procedures
+  end
 end
