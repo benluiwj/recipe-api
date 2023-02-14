@@ -25,8 +25,9 @@ class ApplicationController < ActionController::API
           rescue JWT::DecodeError
             []
           end
-        end
-		[]
+		else 
+			[]
+		end
     end
 
 	def require_login
