@@ -29,6 +29,7 @@ class IngredientsController < ApplicationController
 		unless ingredient.update(ingredient_params)
 			render json: {errors: ingredient.errors.full_messages}, status: :unprocessable_entity
 		end
+		render json: {message: "Successfully updated"}, status: :ok
 	end
 
 	def destroy
