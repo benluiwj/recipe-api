@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-	before_action :require_login
-
 	# /recipes
 	def index
 		recipe = Recipe.references(user_id: session_user.id)
@@ -46,11 +44,5 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.find(params[:id])
 		rescue ActiveRecord::RecordNotFound
 			render json: { errors: 'Recipe not found' }, status: :not_found
-	end
-
-	def require_login
-		if not session_user
-			render json: {error: 'No user logged in, please login'}, status: :unauthorized
-		end
 	end
 end
