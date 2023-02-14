@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
 		if all_ingredients
 			render json: all_ingredients, status: :ok
 		else
-			render json: {message: "No recipe found"}, status: :not_found
+			render json: {message: "No ingredients found"}, status: :not_found
 		end
 	end
 
