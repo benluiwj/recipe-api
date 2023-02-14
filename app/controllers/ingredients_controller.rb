@@ -32,7 +32,8 @@ class IngredientsController < ApplicationController
 	end
 
 	def destroy
-		@ingredient.destroy
+		ingredient.destroy
+		render json: {message: "Successfully deleted!"}, status: :ok
 	end
 
 	private
