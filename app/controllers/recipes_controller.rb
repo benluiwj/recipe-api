@@ -42,7 +42,5 @@ class RecipesController < ApplicationController
 
 	def recipe
 		@recipe = Recipe.find(params[:id])
-		rescue ActiveRecord::RecordNotFound
-			render json: { errors: 'Recipe not found' }, status: :not_found
 	end
 end
