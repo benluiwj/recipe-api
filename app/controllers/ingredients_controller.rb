@@ -19,14 +19,18 @@ class IngredientsController < ApplicationController
 	end
 
 	def update
+		unless ingredient.update(ingredient_params)
+			render json: {errors: @ingredient.errors.full_messages}, status: :unprocessable_entity
+		end
 	end
 
 	def destroy
+		@ingredient.destroy
 	end
 
 	private
 	def ingredient_params
-		params.permit(:name, :amount, :units)
+		params.permit(:recipe_id, :id, :name, :amount, :units)
 	end
 
 	def all_ingredients
