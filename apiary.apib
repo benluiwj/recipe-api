@@ -1,0 +1,105 @@
+FORMAT: 1A
+HOST: http://127.0.0.1:3000/
+
+# Recipe
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Authentication
+
+### Create a New User [POST /signup]
+
+Create a new user. Takes in username, email, password and name.
+
++ Request (application/json)
+
+            {
+                "user_name": "username",
+                "email": "email",
+                "password": "password",
+                "name": "name"
+            }
+
++ Response 200 (application/json)
+    
+    + Body
+
+            {
+                "id": 2,
+                "name": "test2",
+                "user_name": "test2",
+                "email": "test2@gmail.com",
+                "password_digest": "$2a$12$Nh7TGmz9ek7XU1.gSz.XMuN.nzwboaBnNB6GZXpsX7R0eR2uy3zH2",
+                "created_at": "2023-01-26T14:04:42.363Z",
+                "updated_at": "2023-01-26T14:04:42.363Z"
+            }
+
+### Login a user [POST /login]
+
+Logs in a current user using email and password. If the user doesnt exist, an error is thrown. If the user exists, 
+user details are returned with a token that can be stored in `localStorage` for auto-login.
+
++ Request (application/json)
+
+        {
+            "email": "email",
+            "password": "password",
+        }
+
++ Response 200 (application/json)
+    
+    + Body
+
+            {
+                "user": {
+                    "id": 2,
+                    "name": "test2",
+                    "user_name": "test2",
+                    "email": "test2@gmail.com",
+                    "password_digest": "$2a$12$Nh7TGmz9ek7XU1.gSz.XMuN.nzwboaBnNB6GZXpsX7R0eR2uy3zH2",
+                    "created_at": "2023-01-26T14:04:42.363Z",
+                    "updated_at": "2023-01-26T14:04:42.363Z"
+                },
+                "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.0NAXbbVzeMaKZAl8HdOq3JcgIDf5xpGF2rkg5frw6FE"
+            }
+
++ Response 422 (application/json)
+    
+    + Body
+    
+            {
+                "status": "error",
+                "message": "We don't find such an user according to your information,please try again."
+            }
+
+
+### Auto-login [GET /auto-login]
+Auto login a user with a valid authorization token.
+
++ Request (application/json)
+
+    + Header 
+            
+            'Authorization': token
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "id": 2,
+                "name": "test2",
+                "user_name": "test2",
+                "email": "test2@gmail.com",
+                "password_digest": "$2a$12$Nh7TGmz9ek7XU1.gSz.XMuN.nzwboaBnNB6GZXpsX7R0eR2uy3zH2",
+                "created_at": "2023-01-26T14:04:42.363Z",
+                "updated_at": "2023-01-26T14:04:42.363Z"
+            }
+
++ Response 401 (application/json)
+
+    + Body
+    
+            {
+            "errors": "No User Logged In."
+            }
