@@ -3,13 +3,14 @@
 ## Setup with Docker
 
 The following instructions are adapted from https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/rails
-To build run the following:
+
+Generate the skeleton app:
 
 ```
 docker compose run --no-deps web rails new . --api --force --database=postgresql
 ```
 
-Run the following to build:
+Rebuild the files after getting the gem files
 
 ```
 docker compose build
